@@ -27,7 +27,7 @@ const connect = async () => {
 
 // Middleware
 app.use(
-  cors({ origin: "https://universe-v24c.onrender.com", credentials: true })
+  cors({ origin: "https://universe-senior.herokuapp.com/", credentials: true })
 );
 app.use(express.json()); //sending information using postman json
 app.use(cookieParser());
@@ -40,6 +40,12 @@ app.use("/api/followers", followersRoute);
 app.use("/api/events", eventsRoute);
 app.use("/api/conversation", conversationRoute);
 app.use("/api/auth", authRoute);
+
+app.use(express.static(path.join(__dirname, "/client/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/client/build", "index.html"));
+});
 
 app.use((err, req, res, next) => {
   const errorStatus = err.status || 500;
