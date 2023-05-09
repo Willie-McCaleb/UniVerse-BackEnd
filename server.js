@@ -27,7 +27,7 @@ const connect = async () => {
 
 // Middleware
 app.use(
-  cors({ origin: "https://universe-v24c.onrender.com", credentials: true })
+  cors({ origin: "https://universe-v24c.onrender.com/", credentials: true })
 );
 app.use(express.json()); //sending information using postman json
 app.use(cookieParser());
@@ -48,7 +48,7 @@ app.use((err, req, res, next) => {
   return res.status(errorStatus).send(errorMessage);
 });
 
-app.listen(8800, () => {
+app.listen(process.env.PORT || 8800, () => {
   connect();
   console.log("Backend server is running");
 });
