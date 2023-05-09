@@ -26,7 +26,9 @@ const connect = async () => {
 };
 
 // Middleware
-app.use(cors({ origin: "https://UniVerse.onrender.com", credentials: true }));
+app.use(
+  cors({ origin: "https://universe-v24c.onrender.com", credentials: true })
+);
 app.use(express.json()); //sending information using postman json
 app.use(cookieParser());
 
